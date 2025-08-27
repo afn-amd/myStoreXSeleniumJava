@@ -236,7 +236,7 @@ public class Action extends BaseClass {
 	 */
 
 	@Override
-	public boolean selectByVisibleText(String visibletext, WebElement ele) {
+	public static boolean selectByVisibleText(String visibletext, WebElement ele) {
 		boolean flag = false;
 		try {
 			Select s = new Select(ele);
@@ -281,7 +281,7 @@ public class Action extends BaseClass {
 	}
 
 	@Override
-	public boolean JSClick(WebDriver driver, WebElement ele) {
+	public static boolean JSClick(WebDriver driver, WebElement ele) {
 		boolean flag = false;
 		try {
 			// WebElement element = driver.findElement(locator);
