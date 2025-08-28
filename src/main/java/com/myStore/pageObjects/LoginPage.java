@@ -35,6 +35,13 @@ public class LoginPage extends BaseClass {
 		return new HomePage();
 	}
 	
+	public AddressPage login1(String uname, String pswd) throws Throwable {
+		Action.type(username, uname);
+		Action.type(password, pswd);
+		Action.click(driver, signInButton);
+		return new AddressPage();
+	}
+	
 	public AccountCreationPage createNewAccount(String newEmail) throws Throwable {
 		Action.type(emailForNewAccount, newEmail);
 		return new AccountCreationPage();
