@@ -18,10 +18,10 @@ public class BaseClass {
 	public static WebDriver driver;
 	
 	//to load the configuration
-	@BeforeSuite(groups = { "Smoke", "Sanity", "Regression" })
+	@BeforeSuite//(groups = { "Smoke", "Sanity", "Regression" })
 	public void loadConfig() {
-		ExtentManager.setExtent();
-		DOMConfigurator.configure("log4j.xml");
+		//ExtentManager.setExtent();
+		//DOMConfigurator.configure("log4j.xml");
 
 		try {
 			prop = new Properties();
@@ -36,8 +36,8 @@ public class BaseClass {
 		}
 	}
 	
-	public void launchApp(String browserName) {
-		// String browserName = prop.getProperty("browser");
+	public void launchApp() {//String browserName) {
+		String browserName = prop.getProperty("browser");
 		if (browserName.equalsIgnoreCase("Chrome")) {
 			driver = new ChromeDriver();
 		} else if (browserName.equalsIgnoreCase("FireFox")) {
