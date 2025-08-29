@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import com.myStore.base.BaseClass;
 import com.myStore.pageObjects.IndexPage;
 
-public class IndexPageText extends BaseClass {
+public class IndexPageTest extends BaseClass {
 	
 	IndexPage indexPage;
 	
