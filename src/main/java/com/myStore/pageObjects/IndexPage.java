@@ -27,6 +27,7 @@ public class IndexPage extends BaseClass {
 	}
 	
 	public LoginPage clickOnSignIn() throws Throwable {
+		Action.fluentWait(driver, signInBtn, 10);
 		Action.click(driver, signInBtn);
 		return new LoginPage();
 	}
