@@ -21,15 +21,13 @@ public class HomePageTest extends BaseClass {
 		launchApp();
 	}
 
-	/*@Test
-	public void wishListTest() throws Throwable {
-		indexPage = new IndexPage();
-		loginPage = indexPage.clickOnSignIn();
-		homePage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
-		boolean result = homePage.validateMyWishList();
-		Assert.assertTrue(result);
-	}*/
-	
+	/*
+	 * @Test public void wishListTest() throws Throwable { indexPage = new
+	 * IndexPage(); loginPage = indexPage.clickOnSignIn(); homePage =
+	 * loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
+	 * boolean result = homePage.validateMyWishList(); Assert.assertTrue(result); }
+	 */
+
 	@Test
 	public void orderHistoryAndDetailsTest() throws Throwable {
 		indexPage = new IndexPage();
