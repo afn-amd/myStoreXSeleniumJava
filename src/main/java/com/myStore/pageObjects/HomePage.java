@@ -24,8 +24,8 @@ public class HomePage extends BaseClass {
 	 * Action.isDisplayed(driver, myWishList); }
 	 */
 
-	public void validateOrderHistory() throws Throwable {
-		Action.isDisplayed(driver, orderHistory);
+	public boolean validateOrderHistory() throws Throwable {
+		return Action.isDisplayed(driver, orderHistory);
 	}
 
 	public String getCurrUrl() {
