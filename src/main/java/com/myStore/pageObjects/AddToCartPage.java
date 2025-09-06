@@ -46,6 +46,7 @@ public class AddToCartPage extends BaseClass {
 	}
 	
 	public OrderPage clickOnCheckOut() throws Throwable {
+		Action.fluentWait(driver, proceedToCheckOutButton, 10);
 		Action.JSClick(driver, proceedToCheckOutButton);
 		return new OrderPage();
 	}
