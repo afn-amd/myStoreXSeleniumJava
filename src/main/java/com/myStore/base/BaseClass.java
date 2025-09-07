@@ -10,18 +10,27 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.BeforeSuite;
 
 public class BaseClass {
-	
+
 	public static Properties prop;
-	public static WebDriver driver;
-	
-	//to load the configuration
-	@BeforeSuite//(groups = { "Smoke", "Sanity", "Regression" })
+	// public static WebDriver driver;
+
+	// Declare ThreadLocal Driver
+	public static ThreadLocal<RemoteWebDriver> driver = new ThreadLocal<>();
+
+	public static WebDriver getDriver() {
+		// Get Driver from threadLocalmap
+		return driver.get();
+	}
+
+	// to load the configuration
+	@BeforeSuite // (groups = { "Smoke", "Sanity", "Regression" })
 	public void loadConfig() {
-		//ExtentManager.setExtent();
-		//DOMConfigurator.configure("log4j.xml");
+		// ExtentManager.setExtent();
+		// DOMConfigurator.configure("log4j.xml");
 
 		try {
 			prop = new Properties();
@@ -35,30 +44,31 @@ public class BaseClass {
 			e.printStackTrace();
 		}
 	}
-	
-	public void launchApp() {//String browserName) {
+
+	public static void launchApp() {// String browserName) {
 		String browserName = prop.getProperty("browser");
 		if (browserName.equalsIgnoreCase("Chrome")) {
-			driver = new ChromeDriver();
+			// driver = new ChromeDriver();
+			driver.set(new ChromeDriver());
 		} else if (browserName.equalsIgnoreCase("FireFox")) {
-			driver = new FirefoxDriver();
+			// driver = new FirefoxDriver();
+			driver.set(new FirefoxDriver());
 		} else if (browserName.equalsIgnoreCase("IE")) {
-			driver = new InternetExplorerDriver();
+			// driver = new InternetExplorerDriver();
+			driver.set(new InternetExplorerDriver());
 		}
-		//Maximize the screen
-		driver.manage().window().maximize();
-		//Delete all the cookies
-		driver.manage().deleteAllCookies();
+		// Maximize the screen
+		getDriver().manage().window().maximize();
+		// Delete all the cookies
+		getDriver().manage().deleteAllCookies();
 		// Implicit Wait
-		driver.manage().timeouts().implicitlyWait(
-		    Duration.ofSeconds(Long.parseLong(prop.getProperty("implicitWait")))
-		);
+		getDriver().manage().timeouts()
+				.implicitlyWait(Duration.ofSeconds(Long.parseLong(prop.getProperty("implicitWait"))));
 		// Page Load Timeout
-		driver.manage().timeouts().pageLoadTimeout(
-		    Duration.ofSeconds(Long.parseLong(prop.getProperty("pageLoadTimeOut")))
-		);
-		//Launching the URL
-		driver.get(prop.getProperty("url"));
+		getDriver().manage().timeouts()
+				.pageLoadTimeout(Duration.ofSeconds(Long.parseLong(prop.getProperty("pageLoadTimeOut"))));
+		// Launching the URL
+		getDriver().get(prop.getProperty("url"));
 	}
 
 }

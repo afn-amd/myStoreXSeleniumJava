@@ -16,15 +16,15 @@ public class ShippingPage extends BaseClass {
 	WebElement proceedToCheckOutButton;
 	
 	public ShippingPage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(getDriver(), this);
 	}
 	
 	public void checkTheTerms() throws Throwable {
-		Action.click(driver, terms);
+		Action.click(getDriver(), terms);
 	}
 	
 	public PaymentPage clickOnProceedToCheckOut() throws Throwable {
-		Action.click(driver, proceedToCheckOutButton);
+		Action.click(getDriver(), proceedToCheckOutButton);
 		return new PaymentPage();
 	}
 

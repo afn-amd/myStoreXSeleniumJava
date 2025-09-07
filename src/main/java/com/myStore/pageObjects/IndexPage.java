@@ -23,27 +23,27 @@ public class IndexPage extends BaseClass {
 	
 	//to initialize page objects
 	public IndexPage() {
-		PageFactory.initElements(driver, this);	
+		PageFactory.initElements(getDriver(), this);	
 	}
 	
 	public LoginPage clickOnSignIn() throws Throwable {
-		Action.fluentWait(driver, signInBtn, 10);
-		Action.click(driver, signInBtn);
+		Action.fluentWait(getDriver(), signInBtn, 10);
+		Action.click(getDriver(), signInBtn);
 		return new LoginPage();
 	}
 	
 	public boolean validateLogo() throws Throwable {
-		return Action.isDisplayed(driver, myStoreLogo);
+		return Action.isDisplayed(getDriver(), myStoreLogo);
 	}
 	
 	public String getMyStoreTitle() {
-		String myStoreTitle = driver.getTitle();
+		String myStoreTitle = getDriver().getTitle();
 		return myStoreTitle;
 	}
 	
 	public SearchResultPage searchProduct(String productName) {
 		Action.type(searchProductBox, productName);
-		Action.click(driver, searchButton);
+		Action.click(getDriver(), searchButton);
 		return new SearchResultPage();
 	}
 	

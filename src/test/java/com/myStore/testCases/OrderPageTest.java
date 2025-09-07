@@ -40,7 +40,7 @@ public class OrderPageTest extends BaseClass {
 
 	@AfterMethod
 	public void tearDown() {
-		driver.quit();
+		getDriver().quit();
 	}
 
 }

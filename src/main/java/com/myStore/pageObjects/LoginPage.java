@@ -25,26 +25,26 @@ public class LoginPage extends BaseClass {
 	WebElement createNewAccountButton;
 	
 	public LoginPage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(getDriver(), this);
 	}
 	
 	public HomePage login(String uname, String pswd) throws Throwable {
 		Action.type(username, uname);
 		Action.type(password, pswd);
-		Action.click(driver, signInButton);
+		Action.click(getDriver(), signInButton);
 		return new HomePage();
 	}
 	
 	public AddressPage login1(String uname, String pswd) throws Throwable {
 		Action.type(username, uname);
 		Action.type(password, pswd);
-		Action.click(driver, signInButton);
+		Action.click(getDriver(), signInButton);
 		return new AddressPage();
 	}
 	
 	public AccountCreationPage createNewAccount(String newEmail) throws Throwable {
 		Action.type(emailForNewAccount, newEmail);
-		Action.click(driver, createNewAccountButton);
+		Action.click(getDriver(), createNewAccountButton);
 		return new AccountCreationPage();
 	}
 
